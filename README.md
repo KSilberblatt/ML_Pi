@@ -110,8 +110,14 @@
       *y' =  b + w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + ... + w<sub>n</sub>x<sub>n</sub>*
 * Loss (*L<sub>1</sub> loss*): Loss function based on the absolute value of the difference between the values that a model is predicting and the actual values of the labels. L<sub>1</sub> loss is less sensitive to outliers than L<sub>2</sub> loss.
 * Squared Loss (*L<sub>2</sub> loss*): The loss function used in linear regression. This function calculates the squares of the difference between a model's predicted value for a labeled example and the actual value of the label. Due to squaring, this loss function amplifies the influence of bad predictions. That is, squared loss reacts more strongly to outliers than L1 loss.
-* Mean square error (MSE):
+* Mean square error (MSE) the average squared loss per example over the whole dataset. To calculate MSE, sum up all the squared losses for individual examples and then divide by the number of examples:
   * Formula: <a href="https://www.codecogs.com/eqnedit.php?latex=MSE&space;=&space;\frac{1}{N}&space;\sum_{(x,y)\in&space;D}&space;(y&space;-&space;prediction(x))^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?MSE&space;=&space;\frac{1}{N}&space;\sum_{(x,y)\in&space;D}&space;(y&space;-&space;prediction(x))^2" title="MSE = \frac{1}{N} \sum_{(x,y)\in D} (y - prediction(x))^2" /></a>
+    * (*x,y*): an example in which
+      * *x*: the set of features that the model uses to make predictions.
+      * *y*: the example's label.
+    * *prediction(x)*: function of the weights and bias in combination with the set of features *x*.
+    * *D* is a data set containing many labeled examples, which are *(x,y)* pairs.
+    * *N* is the number of examples in *D*.
 * Empirical Risk Minimization (**ERM**): Choosing the function that minimizes loss on the training set. **Contrast** with structural risk minimization
 * Structural Risk Minimization (**SRM**):
   * An algorithm that balances two goals:
@@ -120,6 +126,21 @@
   * For example, a function that minimizes loss+regularization on the training set is a structural risk minimization algorithm.
   * For more information, see http://www.svms.org/srm/.
   * **Contrast** with empirical risk minimization.
+* Convergence: Informally, often refers to a state reached during training in which training loss and validation loss change very little or not at all with each iteration after a certain number of iterations. In other words, a model reaches convergence when additional training on the current data will not improve the model. In deep learning, loss values sometimes stay constant or nearly so for many iterations before finally descending, temporarily producing a false sense of convergence.
+  * See also [early stopping](https://developers.google.com/machine-learning/glossary/#early_stopping)
+  * See also [Boyd and Vandenberghe, Convex Optimization](https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf)
+* Gradient descent: A technique to minimize loss by computing the gradients of loss with respect to the model's parameters, conditioned on training data. Informally, gradient descent iteratively adjusts parameters, gradually finding the best combination of weights and bias to minimize loss.
+* Step: A forward and backward evaluation of one batch.
+* Batch: The set of examples used in one iteration (that is, one gradient update) of model training.
+* Learning rate (Also **step-size**): A scalar used to train a model via gradient descent. During each iteration, the gradient descent algorithm multiplies the learning rate by the **gradient**. The resulting product is called the gradient step.
+  * Learning rate is a key **hyperparameter**.
+  * **Gradient** or **gradient vector**: The vector of partial derivatives with respect to all of the independent variables. In machine learning, the gradient is the vector of partial derivatives of the model function. The gradient points in the direction of steepest ascent.
+* Hyperparameter: The "knobs" that you (the programmer) tweak during successive runs of training a model.
+* Stochastic gradient descent (Vanilla SGD): A gradient descent algorithm in which the **batch size** is one. In other words, SGD relies on a single example chosen uniformly at random from a dataset to calculate an estimate of the gradient at each step.
+* Batch size: The number of examples in a batch. For example, the batch size of SGD is 1, while the batch size of a **mini-batch** is usually between 10 and 1000. Batch size is usually fixed during training and inference; however, TensorFlow does permit dynamic batch sizes.
+* Mini-batch: A small, randomly selected subset of the entire batch of examples run together in a single iteration of training or inference. The batch size of a mini-batch is usually between 10 and 1,000. It is much more efficient to calculate the loss on a mini-batch than on the full training data.
+  * Mini-batch stochastic gradient descent (Mini-batch SGD): A gradient descent algorithm that uses mini-batches. In other words, mini-batch SGD estimates the gradient based on a small subset of the training data. Vanilla SGD uses a mini-batch of size 1.
+
 
 ## **Keras**
 * What is activation?
@@ -135,7 +156,7 @@
 
 
 ## **References**
-* [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course) ~10 hours
+* [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course) ~10 hours [Bookmark](https://developers.google.com/machine-learning/crash-course/first-steps-with-tensorflow/video-lecture)
 * [What is going on in a neural network?](www.distill.pub)
 * [k-nearest neighbors YT example](https://www.youtube.com/watch?v=AoeEHqVSNOw) ~9 min
 * [Tensor flow probability - math heavy](https://www.tensorflow.org/probability)
@@ -161,3 +182,9 @@
 ## Tools
 * [Visualize data with Facets](https://github.com/PAIR-code/facets)
 * [Write Equations in Markdown](https://www.codecogs.com/latex/eqneditor.php)
+
+## Notable sources I gathered and **copied** information (not bothering with MLA since these docs are not intended for distribution):
+* https://developers.google.com/machine-learning/glossary
+* https://developers.google.com/machine-learning/crash-course
+* https://www.youtube.com/watch?v=tYYVSEHq-io&t=5496s
+* https://www.youtube.com/playlist?list=PLOU2XLYxmsIIuiBfYad6rFYQU_jL2ryal
