@@ -94,6 +94,32 @@
 
 ### *Key Terms:*
 * Classifier: a function that takes data as an input and outputs a label effectively creating the "rules" that categorize your labels through **supervised learning**
+* Labels: the thing we're predicting
+* Model: A model defines the relationship between features and label. For example, a spam detection model might associate certain features strongly with "spam"
+  * A **regression model** predicts continuous values
+  * A **classification model** predicts discrete values
+* Inference: in machine learning, often refers to the process of making predictions by applying the trained model to unlabeled examples. In statistics, inference refers to the process of fitting the parameters of a distribution conditioned on some observed data.
+* Linear regression: a method for finding the straight line or hyperplane that best fits a set of points **line of best fit**
+  * *y' =  b + w<sub>1</sub>x<sub>1</sub>*
+    * y': our linear function
+    * b: our y-intercept also our **bias**
+      * bias: An intercept or offset from an origin. Bias (also known as the bias term) is referred to as b or w0 in machine learning models
+    * w<sub>1</sub>: weight of feature 1 (slope of our line)
+    * x<sub>1</sub>: feature 1 (a known input)
+    * If there were more features we would add w's and x's up to *n* features.
+      *y' =  b + w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + ... + w<sub>n</sub>x<sub>n</sub>*
+* Loss (*L<sub>1</sub> loss*): Loss function based on the absolute value of the difference between the values that a model is predicting and the actual values of the labels. L<sub>1</sub> loss is less sensitive to outliers than L<sub>2</sub> loss.
+* Squared Loss (*L<sub>2</sub> loss*): The loss function used in linear regression. This function calculates the squares of the difference between a model's predicted value for a labeled example and the actual value of the label. Due to squaring, this loss function amplifies the influence of bad predictions. That is, squared loss reacts more strongly to outliers than L1 loss.
+* Mean square error (MSE):
+  * Formula: <a href="https://www.codecogs.com/eqnedit.php?latex=MSE&space;=&space;\frac{1}{N}&space;\sum_{(x,y)\in&space;D}&space;(y&space;-&space;prediction(x))^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?MSE&space;=&space;\frac{1}{N}&space;\sum_{(x,y)\in&space;D}&space;(y&space;-&space;prediction(x))^2" title="MSE = \frac{1}{N} \sum_{(x,y)\in D} (y - prediction(x))^2" /></a>
+* Empirical Risk Minimization (**ERM**): Choosing the function that minimizes loss on the training set. **Contrast** with structural risk minimization
+* Structural Risk Minimization (**SRM**):
+  * An algorithm that balances two goals:
+    * The desire to build the most predictive model (for example, lowest loss).
+    * The desire to keep the model as simple as possible (for example, strong regularization).
+  * For example, a function that minimizes loss+regularization on the training set is a structural risk minimization algorithm.
+  * For more information, see http://www.svms.org/srm/.
+  * **Contrast** with empirical risk minimization.
 
 ## **Keras**
 * What is activation?
@@ -134,3 +160,4 @@
 
 ## Tools
 * [Visualize data with Facets](https://github.com/PAIR-code/facets)
+* [Write Equations in Markdown](https://www.codecogs.com/latex/eqneditor.php)
