@@ -76,6 +76,13 @@
 * [What is going on in a neural network?](www.distill.pub)
 * [k-nearest neighbors YT example](https://www.youtube.com/watch?v=AoeEHqVSNOw) ~9 min
 * [Tensor flow probability - math heavy](https://www.tensorflow.org/probability)
+* [Tensor flow YT doc on github](https://github.com/tensorflow/docs/blob/master/site/en/tutorials/keras/basic_classification.ipynb)
+* [Stanford Tensor flow course](http://web.stanford.edu/class/cs20si/)
+* [Stanford Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu/syllabus.html)
+* [YouTube - Machine Learning Recipes #1](https://www.youtube.com/watch?v=cKxRvEZd3Mw)
+* [Book/PDF Deep Learning with Python](http://faculty.neu.edu.cn/yury/AAI/Textbook/Deep%20Learning%20with%20Python.pdf)
+* [Book/PDF Hands on Machine Learning with Scikit-Learn & Tensor Flow](http://index-of.es/Varios-2/Hands%20on%20Machine%20Learning%20with%20Scikit%20Learn%20and%20Tensorflow.pdf)
+* [Book/PDF Deep Learning](https://www.deeplearningbook.org/front_matter.pdf)
 
 ## **Important random notes**
 *delete when memorized or when sorted in a better place*
