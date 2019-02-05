@@ -1,6 +1,8 @@
 # **Goals/ToDo**
 *Update and change goals as they are completed and to keep track of what to learn*
 
+* Look into [OpenCV](https://opencv.org/)
+
 * Learn about machine learning practices
   * Use/Learn Tensor Flow
     * Use/Learn Keras
@@ -80,7 +82,12 @@
     * regulizers?
     * dropout?
   * What is an Epoch?
-* High level **TensorFlow**
+* High level **TensorFlow**: a computational framework for building machine learning models. TensorFlow provides a variety of different toolkits that allow you to construct models at your preferred level of abstraction. You can use lower-level APIs to build models by defining a series of mathematical operations. Alternatively, you can use higher-level APIs (like tf.estimator) to specify predefined architectures, such as linear regressors or neural networks.
+  * Data structures:
+    * DataFrame: relational data table with rows and named columns. Can be populated by **Series** objects
+      * Often DataFrames are populated by *.csv* files
+    * Series: a single column of data, used to populate **DataFrames** when coupled with names
+      * if the **Series** objects' length don't match during mapping NaN values are assigned in place.
   * Fun facts:
     * For image classification instead of starting from scratch, TensorFlow retrains *Inception* with your dataset. *Inception* took 2 weeks on a high powered desktop to train. Might be worth looking into to see how it was trained.
 * High level **k-nearest neighbors**
@@ -140,6 +147,9 @@
 * Batch size: The number of examples in a batch. For example, the batch size of SGD is 1, while the batch size of a **mini-batch** is usually between 10 and 1000. Batch size is usually fixed during training and inference; however, TensorFlow does permit dynamic batch sizes.
 * Mini-batch: A small, randomly selected subset of the entire batch of examples run together in a single iteration of training or inference. The batch size of a mini-batch is usually between 10 and 1,000. It is much more efficient to calculate the loss on a mini-batch than on the full training data.
   * Mini-batch stochastic gradient descent (Mini-batch SGD): A gradient descent algorithm that uses mini-batches. In other words, mini-batch SGD estimates the gradient based on a small subset of the training data. Vanilla SGD uses a mini-batch of size 1.
+* Estimator: an instance of the <code>tf.Estimator</code> class, which encapsulates logic that builds a TensorFlow graph and runs a TensorFlow session. You may create your own custom Estimators or instantiate premade Estimators created by others.
+* Tensor: The primary data structure in TensorFlow programs. Tensors are N-dimensional (where N could be very large) data structures, most commonly scalars, vectors, or matrices. The elements of a Tensor can hold integer, floating-point, or string values.
+* Graph: In TensorFlow, a computation specification. Nodes in the graph represent operations. Edges are directed and represent passing the result of an operation (a Tensor) as an operand to another operation. Use **TensorBoard** to visualize a graph.
 
 
 ## **Keras**
@@ -153,10 +163,13 @@
 
 ## **Raspberry Pi**
 
-
+## **Training Data**
+### Choose method:
+#### Two
 
 ## **References**
-* [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course) ~10 hours [Bookmark](https://developers.google.com/machine-learning/crash-course/first-steps-with-tensorflow/video-lecture)
+* [OpenCV solution for clusterd die](https://docs.opencv.org/3.4/d3/db4/tutorial_py_watershed.html?fbclid=IwAR3rmo0HVsDTJky-bHeUpX8xoRES1iZjNli6rnDSJrTBsHBz7wjzgwgvHwY)
+* [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course) ~10 hours [Bookmark](https://developers.google.com/machine-learning/crash-course/first-steps-with-tensorflow/programming-exercises)
 * [What is going on in a neural network?](www.distill.pub)
 * [k-nearest neighbors YT example](https://www.youtube.com/watch?v=AoeEHqVSNOw) ~9 min
 * [Tensor flow probability - math heavy](https://www.tensorflow.org/probability)
