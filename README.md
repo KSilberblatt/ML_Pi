@@ -75,6 +75,16 @@
 
 ## **ML**
 * High level what is a Neural network? -*see references*-
+  * Hyperparameter tuning
+    * Is There a Standard Heuristic for Model Tuning? :This is a commonly asked question. The short answer is that the effects of different hyperparameters are data dependent. So there are no hard-and-fast rules; you'll need to test on your data. That said, here are a few rules of thumb that may help guide you:
+      * Training error should steadily decrease, steeply at first, and should eventually plateau as training converges.
+      * If the training has not converged, try running it for longer.
+      * If the training error decreases too slowly, increasing the learning rate may help it decrease faster.
+        * But sometimes the exact opposite may happen if the learning rate is too high.
+      * If the training error varies wildly, try decreasing the learning rate.
+        * Lower learning rate plus larger number of steps or larger batch size is often a good combination.
+      * Very small batch sizes can also cause instability. First try larger values like 100 or 1000, and decrease until you see degradation.
+    * Never go strictly by these rules of thumb, because the effects are data dependent. Always experiment and verify.
   * What is an embedding layer?
   * What is a dense layer?
   * What is a global average cooling layer?
@@ -150,6 +160,8 @@
 * Estimator: an instance of the <code>tf.Estimator</code> class, which encapsulates logic that builds a TensorFlow graph and runs a TensorFlow session. You may create your own custom Estimators or instantiate premade Estimators created by others.
 * Tensor: The primary data structure in TensorFlow programs. Tensors are N-dimensional (where N could be very large) data structures, most commonly scalars, vectors, or matrices. The elements of a Tensor can hold integer, floating-point, or string values.
 * Graph: In TensorFlow, a computation specification. Nodes in the graph represent operations. Edges are directed and represent passing the result of an operation (a Tensor) as an operand to another operation. Use **TensorBoard** to visualize a graph.
+* Gradient clipping: Capping gradient values before applying them. Gradient clipping helps ensure numerical stability and prevents exploding gradients.
+
 
 
 ## **Keras**
@@ -180,6 +192,7 @@
 * [Book/PDF Deep Learning with Python](http://faculty.neu.edu.cn/yury/AAI/Textbook/Deep%20Learning%20with%20Python.pdf)
 * [Book/PDF Hands on Machine Learning with Scikit-Learn & Tensor Flow](http://index-of.es/Varios-2/Hands%20on%20Machine%20Learning%20with%20Scikit%20Learn%20and%20Tensorflow.pdf)
 * [Book/PDF Deep Learning](https://www.deeplearningbook.org/front_matter.pdf)
+* [Gradient Exploding](http://www.cs.toronto.edu/~rgrosse/courses/csc321_2017/readings/L15%20Exploding%20and%20Vanishing%20Gradients.pdf)
 
 ## **Important random notes**
 *delete when memorized or when sorted in a better place*
