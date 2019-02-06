@@ -85,6 +85,15 @@
         * Lower learning rate plus larger number of steps or larger batch size is often a good combination.
       * Very small batch sizes can also cause instability. First try larger values like 100 or 1000, and decrease until you see degradation.
     * Never go strictly by these rules of thumb, because the effects are data dependent. Always experiment and verify.
+    * Common hyperparameters: steps and batch size
+      * <code>*total number of trained examples* = *batch size* \*
+      *steps*</code>
+      * steps: the total number of training iterations. One step calculates the loss from one batch and uses that value to modify the model's weights once
+      * batch size: the number of examples (chosen at random) for a single step
+    * [More on Hyperparameters, Cleaning Data, and plotting](https://colab.research.google.com/notebooks/mlcc/synthetic_features_and_outliers.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=syntheticfeatures-colab&hl=en)
+  * Convenience variable: a variable to help the programmer visualize data but doesn't affect the outcome of what the machine learns
+    * Periods: controls the granularity of reporting. For example, if periods is set to 7 and steps is set to 70, then the exercise will output the loss value every 10 steps (or 7 times). Unlike hyperparameters, we don't expect you to modify the value of periods. Note that modifying periods does not alter what your model learns.
+      <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;number\,of\,training\,examples\,in\,each\,period&space;=&space;\frac{batch\,size&space;*&space;steps}&space;{periods}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;number\,of\,training\,examples\,in\,each\,period&space;=&space;\frac{batch\,size&space;*&space;steps}&space;{periods}" title="number\,of\,training\,examples\,in\,each\,period = \frac{batch\,size * steps} {periods}" /></a>
   * What is an embedding layer?
   * What is a dense layer?
   * What is a global average cooling layer?
@@ -157,9 +166,11 @@
 * Batch size: The number of examples in a batch. For example, the batch size of SGD is 1, while the batch size of a **mini-batch** is usually between 10 and 1000. Batch size is usually fixed during training and inference; however, TensorFlow does permit dynamic batch sizes.
 * Mini-batch: A small, randomly selected subset of the entire batch of examples run together in a single iteration of training or inference. The batch size of a mini-batch is usually between 10 and 1,000. It is much more efficient to calculate the loss on a mini-batch than on the full training data.
   * Mini-batch stochastic gradient descent (Mini-batch SGD): A gradient descent algorithm that uses mini-batches. In other words, mini-batch SGD estimates the gradient based on a small subset of the training data. Vanilla SGD uses a mini-batch of size 1.
-* Estimator: an instance of the <code>tf.Estimator</code> class, which encapsulates logic that builds a TensorFlow graph and runs a TensorFlow session. You may create your own custom Estimators or instantiate premade Estimators created by others.
+* Estimator: an instance of the <code>tf.Estimator</code> class, which encapsulates logic that builds a TensorFlow graph and runs a TensorFlow **session**. You may create your own custom Estimators or instantiate premade Estimators created by others.
+  * Session (<code>tf.session</code>): An object that encapsulates the state of the TensorFlow runtime and runs all or part of a graph. When using the low-level TensorFlow APIs, you instantiate and manage one or more <code>tf.session</code> objects directly. When using the Estimators API, Estimators instantiate session objects for you.
 * Tensor: The primary data structure in TensorFlow programs. Tensors are N-dimensional (where N could be very large) data structures, most commonly scalars, vectors, or matrices. The elements of a Tensor can hold integer, floating-point, or string values.
-* Graph: In TensorFlow, a computation specification. Nodes in the graph represent operations. Edges are directed and represent passing the result of an operation (a Tensor) as an operand to another operation. Use **TensorBoard** to visualize a graph.
+* Graph: In TensorFlow, a computation specification. Nodes in the graph represent operations. Edges are directed and represent passing the result of an **operation** (a Tensor) as an operand to another operation. Use **TensorBoard** to visualize a graph.
+  * Operation (op): A node in the TensorFlow graph. In TensorFlow, any procedure that creates, manipulates, or destroys a Tensor is an operation. For example, a matrix multiply is an operation that takes two Tensors as input and generates one Tensor as output.
 * Gradient clipping: Capping gradient values before applying them. Gradient clipping helps ensure numerical stability and prevents exploding gradients.
 
 
