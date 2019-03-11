@@ -94,10 +94,22 @@
   * Convenience variable: a variable to help the programmer visualize data but doesn't affect the outcome of what the machine learns
     * Periods: controls the granularity of reporting. For example, if periods is set to 7 and steps is set to 70, then the exercise will output the loss value every 10 steps (or 7 times). Unlike hyperparameters, we don't expect you to modify the value of periods. Note that modifying periods does not alter what your model learns.
       <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;number\,of\,training\,examples\,in\,each\,period&space;=&space;\frac{batch\,size&space;*&space;steps}&space;{periods}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;number\,of\,training\,examples\,in\,each\,period&space;=&space;\frac{batch\,size&space;*&space;steps}&space;{periods}" title="number\,of\,training\,examples\,in\,each\,period = \frac{batch\,size * steps} {periods}" /></a>
+  * **Generalization**... the following three basic assumptions guide generalization:
+    * We draw examples independently and identically **(i.i.d)** at random from the distribution. In other words, examples don't influence each other. (An alternate explanation: **i.i.d.** is a way of referring to the randomness of variables.)
+    * The distribution is stationary; that is the distribution doesn't change within the data set.
+    * We draw examples from partitions from the same distribution.
+
+    In practice, we sometimes violate these assumptions. For example:
+    * Consider a model that chooses ads to display. The **i.i.d.** assumption would be violated if the model bases its choice of ads, in part, on what ads the user has previously seen.
+    * Consider a data set that contains retail sales information for a year. User's purchases change seasonally, which would violate stationarity.
   * What is an embedding layer?
   * What is a dense layer?
   * What is a global average cooling layer?
   * How to handle overfit and underfit
+    * Ockham's razor in machine learning terms: The less complex an ML model, the more likely that a good empirical result is not just due to the peculiarities of the sample. Helps to avoid overfitting
+      * modern fields following this principle are **statistical learning theory** and **computational learning theory**. These fields have developed generalization bounds--a statistical description of a model's ability to generalize to new data based on factors such as:
+        * the complexity of the model
+        * the model's performance on training data
     * regulizers?
     * dropout?
   * What is an Epoch?
@@ -117,8 +129,33 @@
     * a quality one or more of the labels may contain that sets it apart from other labels.
     * is informative, *independent*, and simple.
     * **in tensor flow features are automatically assigned** by the "black box" algorithm
+* ML Workflow notes: general facts/guidelines to remember during ML workflow
+  * Splitting data into training data and test data:
+    * The larger the training set the better model the machine can learn
+    * The larger the testing set, the tighter the confidence interval we can have in our algorithm
+    * when splitting make sure the examples are split at random
+    * never train on test data - **sometimes happens on accident**
+    * using the same test set too many times can also lead false confidence since hyperparameters will be tuned to that test set.
+      * validation set: similar to a test set, however, by creating a validation set and tuning your hyperparameters to the validation set, you keep the test set clean from over fitting
+  * Features:
+    * when using categorical data as a feature, **one-hot encoding** helps with many categories that may belong to that feature
+      * one-hot encoding can be represented by a vector where '*1*' represents the category the data entry belongs to, [0, 0, ..., 0, 1, 0, ..., 0]
+    * Good features:
+      * Occurs at least a handful of times or more
+      * Have a clear and obvious meaning
+      * Shouldn't have "magic values". i.e. listed houses and past sales where "-1" might indicate it hasn't been listed or sold yet.
+      * Shouldn't change overtime
+      * Shouldn't have crazy outliers
+    * The **Binning Trick**: for features without linear correlation over the entire feature, but strong linear correlation within subsets of the feature.
+      * bucket the the subset features into boolean features (**one-hot encoding**)
+  * Know your data: Visualize, debug, monitor -
+    * Visualize: plot histograms, rank most to least common
+    * Debug: Duplicate examples? missing values? outliers? data agrees with dashboards? Training and Validation data similar?
+    * Monitor: feature quantiles, number of examples over time?
 
 ### *Key Terms:*
+* Generalization: your model's ability to adapt properly to new, previously unseen data, drawn from the same distribution as the one used to create the model.
+* Stationarity: A property of data in a dataset, in which the data distribution stays constant across one or more dimensions. Most commonly, that dimension is time, meaning that data exhibiting stationarity doesn't change over time. For example, data that exhibits stationarity doesn't change from September to December.
 * Classifier: a function that takes data as an input and outputs a label effectively creating the "rules" that categorize your labels through **supervised learning**
 * Labels: the thing we're predicting
 * Model: A model defines the relationship between features and label. For example, a spam detection model might associate certain features strongly with "spam"
@@ -192,7 +229,7 @@
 
 ## **References**
 * [OpenCV solution for clusterd die](https://docs.opencv.org/3.4/d3/db4/tutorial_py_watershed.html?fbclid=IwAR3rmo0HVsDTJky-bHeUpX8xoRES1iZjNli6rnDSJrTBsHBz7wjzgwgvHwY)
-* [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course) ~10 hours [Bookmark](https://developers.google.com/machine-learning/crash-course/first-steps-with-tensorflow/programming-exercises)
+* [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course) ~10 hours [Bookmark](https://developers.google.com/machine-learning/crash-course/representation/cleaning-data)
 * [What is going on in a neural network?](www.distill.pub)
 * [k-nearest neighbors YT example](https://www.youtube.com/watch?v=AoeEHqVSNOw) ~9 min
 * [Tensor flow probability - math heavy](https://www.tensorflow.org/probability)
@@ -209,6 +246,10 @@
 *delete when memorized or when sorted in a better place*
 * Randomize training data and order of input
 * When to stop training data? -When loss is no longer decreasing *early stopping method in Keras*
+**Potential accidental issues I introduce**
+* not all n-sided die are rolled as frequently as one another
+* when creating test/training data, I obviously want multiple photos of each side of every die I have, but could having **5 times** as many test/training photos of a 20-sided die vs a 4-sided die cause problems?
+  * hint: probably
 
 ## Fun Examples
 * [QuickDraw](https://quickdraw.withgoogle.com/)
